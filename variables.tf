@@ -31,10 +31,23 @@ variable "internal_root_domain" {
   description = "The internal root domain."
 }
 
+variable "gcp_credentials_base64" {
+  type        = string
+  sensitive   = true
+  default     = ""
+  description = "GCP service account credentials JSON, base64 encoded."
+}
+
 variable "network" {
   type        = string
   default     = ""
   description = "Name of an existing VPC network. If empty, a new VPC is created."
+}
+
+variable "labels" {
+  type        = map(string)
+  default     = {}
+  description = "Labels to apply to all resources."
 }
 
 variable "tags" {
