@@ -31,6 +31,12 @@ variable "internal_root_domain" {
   description = "The internal root domain."
 }
 
+variable "network" {
+  type        = string
+  default     = ""
+  description = "Name of an existing VPC network. If empty, a new VPC is created."
+}
+
 variable "tags" {
   type        = map(any)
   default     = {}

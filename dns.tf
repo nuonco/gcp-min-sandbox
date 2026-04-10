@@ -21,7 +21,7 @@ resource "google_dns_managed_zone" "internal" {
 
   private_visibility_config {
     networks {
-      network_url = data.google_compute_network.default.id
+      network_url = local.network_id
     }
   }
 

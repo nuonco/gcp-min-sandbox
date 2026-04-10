@@ -7,8 +7,8 @@ output "account" {
 
 output "vpc" {
   value = {
-    network           = data.google_compute_network.default.name
-    network_self_link = data.google_compute_network.default.self_link
+    network           = local.network
+    network_self_link = local.network_self_link
   }
 }
 
