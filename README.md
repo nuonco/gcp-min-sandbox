@@ -20,16 +20,6 @@ The service account or user running Terraform needs:
 - DNS Administrator (`roles/dns.admin`)
 - Service Usage Admin (`roles/serviceusage.serviceUsageAdmin`)
 
-### Bootstrap API
-
-`iamcredentials.googleapis.com` must be enabled before the first `terraform apply` because the Google provider calls it during init, before any resource can run:
-
-```bash
-gcloud services enable iamcredentials.googleapis.com --project=<PROJECT_ID>
-```
-
-All other APIs are enabled automatically by `services.tf`.
-
 ## Quick Start
 
 ```bash
