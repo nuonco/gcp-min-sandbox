@@ -1,63 +1,63 @@
 variable "nuon_id" {
   type        = string
-  description = "The nuon id for this install."
+  description = "Nuon install identifier. Used to name all resources."
 }
 
 variable "project_id" {
   type        = string
-  description = "The GCP project ID."
+  description = "GCP project ID."
 }
 
 variable "region" {
   type        = string
-  description = "The GCP region."
-}
-
-variable "enable_nuon_dns" {
-  type        = string
-  default     = "false"
-  description = "Whether to create Cloud DNS zones for the install."
-}
-
-variable "public_root_domain" {
-  type        = string
-  default     = ""
-  description = "The public root domain."
-}
-
-variable "internal_root_domain" {
-  type        = string
-  default     = ""
-  description = "The internal root domain."
+  description = "GCP region."
 }
 
 variable "gcp_credentials_base64" {
   type        = string
   sensitive   = true
   default     = ""
-  description = "GCP service account credentials JSON, base64 encoded."
+  description = "Service account credentials JSON, base64-encoded. Leave empty to use application default credentials."
 }
 
 variable "network" {
   type        = string
   default     = ""
-  description = "Name of an existing VPC network. If empty, a new VPC is created."
+  description = "Name of an existing VPC network. Leave empty to create a new one."
+}
+
+variable "enable_nuon_dns" {
+  type        = string
+  default     = "false"
+  description = "Set to \"true\" to create Cloud DNS zones (requires public_root_domain)."
+}
+
+variable "public_root_domain" {
+  type        = string
+  default     = ""
+  description = "Public root domain for the DNS zone (e.g. install.example.com). Required when enable_nuon_dns is true."
+}
+
+variable "internal_root_domain" {
+  type        = string
+  default     = ""
+  description = "Internal root domain for the private DNS zone. Optional."
 }
 
 variable "labels" {
   type        = map(string)
   default     = {}
-  description = "Labels to apply to all resources."
+  description = "Additional labels to apply to all resources."
 }
 
 variable "tags" {
   type        = map(any)
   default     = {}
-  description = "Tags to add to install resources."
+  description = "Nuon resource tags, merged with labels."
 }
 
 variable "additional_tags" {
   type        = map(any)
   default     = {}
-  description = "Extra tags to append to the default tags."
+  description = "Extra tags to merge on top of default labels."
 }

@@ -8,6 +8,8 @@ resource "google_dns_managed_zone" "public" {
   description = "Public DNS zone for install ${var.nuon_id}"
 
   force_destroy = true
+
+  depends_on = [google_project_service.dns]
 }
 
 resource "google_dns_managed_zone" "internal" {
@@ -22,9 +24,11 @@ resource "google_dns_managed_zone" "internal" {
 
   private_visibility_config {
     networks {
-      network_url = local.network_id
+      network_url = local.network_self_link
     }
   }
 
   force_destroy = true
+
+  depends_on = [google_project_service.dns]
 }
