@@ -53,6 +53,7 @@ terraform apply -var-file=example.tfvars
 | `internal_root_domain` | Internal private DNS domain | `""` | no |
 | `labels` | Additional labels for all resources | `{}` | no |
 | `tags` | Nuon resource tags, merged with labels | `{}` | no |
+| `additional_tags` | Extra tags merged on top of default labels | `{}` | no |
 
 ## Outputs
 

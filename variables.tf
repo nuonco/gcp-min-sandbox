@@ -51,7 +51,13 @@ variable "labels" {
 }
 
 variable "tags" {
-  type        = map(string)
+  type        = map(any)
   default     = {}
   description = "Nuon resource tags, merged with labels."
+}
+
+variable "additional_tags" {
+  type        = map(any)
+  default     = {}
+  description = "Extra tags to merge on top of default labels."
 }
