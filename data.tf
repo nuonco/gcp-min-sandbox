@@ -6,6 +6,8 @@ data "google_compute_zones" "available" {
   project = var.project_id
   region  = var.region
   status  = "UP"
+
+  depends_on = [google_project_service.compute]
 }
 
 resource "google_compute_network" "main" {
@@ -14,6 +16,8 @@ resource "google_compute_network" "main" {
   project                 = var.project_id
   name                    = "${var.nuon_id}-vpc"
   auto_create_subnetworks = true
+
+  depends_on = [google_project_service.compute]
 }
 
 data "google_compute_network" "existing" {

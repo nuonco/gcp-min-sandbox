@@ -28,10 +28,14 @@ output "nuon_dns" {
       name        = trimsuffix(google_dns_managed_zone.public[0].dns_name, ".")
       nameservers = google_dns_managed_zone.public[0].name_servers
     } : { zone_id = "", name = "", nameservers = tolist([""]) }
-    internal_domain = var.internal_root_domain != "" ? {
+    internal_domain = local.internal_domain != "" ? {
       zone_id     = google_dns_managed_zone.internal[0].managed_zone_id
       name        = trimsuffix(google_dns_managed_zone.internal[0].dns_name, ".")
       nameservers = google_dns_managed_zone.internal[0].name_servers
     } : { zone_id = "", name = "", nameservers = tolist([""]) }
   }
+}
+
+output "availability_zones" {
+  value = join(",", data.google_compute_zones.available.names)
 }
